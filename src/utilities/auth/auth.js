@@ -43,6 +43,13 @@ export default class Auth {
     history.replace("/home");
   }
 
+  isAuthenticated = () => {
+    // Check whether the current time is past the
+    // access token's expiry time
+    let expiresAt = this.expiresAt;
+    return new Date().getTime() < expiresAt;
+  };
+
   login() {
     this.auth0.authorize();
   }

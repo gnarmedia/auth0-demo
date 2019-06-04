@@ -24,7 +24,7 @@ export default class App extends Component {
   render() {
     return (
       <>
-        <Navbar login={this.login} />
+        <Navbar isAuthenticated={auth.isAuthenticated()} login={this.login} />
         <Router history={history}>
           <div>
             <Route
