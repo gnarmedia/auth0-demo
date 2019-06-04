@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import Navbar from "./Navbar.jsx";
 
-import Auth from "../auth/auth";
+import Auth from "../utilities/auth/auth";
 
 const auth = new Auth();
 
