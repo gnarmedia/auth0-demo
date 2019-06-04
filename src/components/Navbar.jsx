@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Navbar() {
+export default function Navbar({ login }) {
   return (
     <header className="masthead">
       <div className="logo">Auth0 Demo</div>
@@ -9,7 +9,7 @@ export default function Navbar() {
           <a href="/">Home</a>
         </li>
         <li>
-          <button>Log In</button>
+          <button onClick={login}>Log In</button>
         </li>
       </ul>
     </header>
