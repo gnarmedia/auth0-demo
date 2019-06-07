@@ -9,30 +9,30 @@ import Dashboard from "./Dashboard.jsx";
 import Auth from "../utilities/auth/auth";
 import history from "../utilities/history";
 
-const auth = new Auth();
-
-function handleAuthentication({ location }) {
-  if (/access_token|id_token|error/.test(location.hash)) {
-    auth.handleAuthentication();
-  }
-}
-
 export default class App extends Component {
+  auth = new Auth();
+
   componentDidMount() {
-    const { renewSession } = auth;
+    const { renewSession } = this.auth;
 
     if (localStorage.getItem("isLoggedIn") === "true") {
       renewSession();
     }
   }
 
-  login() {
-    auth.login();
+  handleAuthentication({ location }) {
+    if (/access_token|id_token|error/.test(location.hash)) {
+      this.auth.handleAuthentication();
+    }
   }
 
-  logout() {
-    auth.logout();
-  }
+  login = () => {
+    this.auth.login();
+  };
+
+  logout = () => {
+    this.auth.logout();
+  };
 
   render() {
     return (
@@ -42,14 +42,14 @@ export default class App extends Component {
             <Route
               path="/callback"
               render={props => {
-                handleAuthentication(props);
+                this.handleAuthentication(props);
                 return <Callback {...props} />;
               }}
             />
             <Route
               render={() => (
                 <Navbar
-                  isAuthenticated={auth.isAuthenticated()}
+                  isAuthenticated={this.auth.isAuthenticated()}
                   login={this.login}
                   logout={this.logout}
                 />
