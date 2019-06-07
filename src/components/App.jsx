@@ -17,6 +17,14 @@ function handleAuthentication({ location }) {
 }
 
 export default class App extends Component {
+  componentDidMount() {
+    const { renewSession } = auth;
+
+    if (localStorage.getItem("isLoggedIn") === "true") {
+      renewSession();
+    }
+  }
+
   login() {
     auth.login();
   }
