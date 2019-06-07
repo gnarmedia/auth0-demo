@@ -4,6 +4,7 @@ import { Route, Router } from "react-router-dom";
 import Callback from "./Callback/Callback.jsx";
 import Navbar from "./Navbar.jsx";
 import Home from "./Home.jsx";
+import Dashboard from "./Dashboard.jsx";
 
 import Auth from "../utilities/auth/auth";
 import history from "../utilities/history";
@@ -55,6 +56,7 @@ export default class App extends Component {
               )}
             />
             <Route path="/" component={Home} />
+            <Route path="/dashboard" component={Dashboard} />
           </div>
         </Router>
       </>
