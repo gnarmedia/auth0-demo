@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Router } from "react-router-dom";
+import { Router, Route, Redirect } from "react-router-dom";
 
 import Callback from "./Callback/Callback.jsx";
 import Navbar from "./Navbar.jsx";
@@ -58,7 +58,13 @@ export default class App extends Component {
           <Route
             path="/dashboard"
             exact
-            render={() => <Dashboard auth={this.auth} />}
+            render={props =>
+              this.auth.isAuthenticated() ? (
+                <Dashboard auth={this.auth} />
+              ) : (
+                <Redirect to={{ pathname: "/" }} />
+              )
+            }
           />
         </Router>
       </div>
