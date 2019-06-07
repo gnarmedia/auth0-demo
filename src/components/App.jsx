@@ -39,6 +39,13 @@ export default class App extends Component {
         <Router history={history}>
           <div>
             <Route
+              path="/callback"
+              render={props => {
+                handleAuthentication(props);
+                return <Callback {...props} />;
+              }}
+            />
+            <Route
               render={() => (
                 <Navbar
                   isAuthenticated={auth.isAuthenticated()}
@@ -46,13 +53,6 @@ export default class App extends Component {
                   logout={this.logout}
                 />
               )}
-            />
-            <Route
-              path="/callback"
-              render={props => {
-                handleAuthentication(props);
-                return <Callback {...props} />;
-              }}
             />
             <Route path="/" component={Home} />
           </div>
