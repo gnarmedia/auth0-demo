@@ -53,4 +53,21 @@ export default class Auth {
   login() {
     this.auth0.authorize();
   }
+
+  logout() {
+    // Remove tokens and expiry time
+    this.accessToken = null;
+    this.idToken = null;
+    this.expiresAt = 0;
+
+    // Remove isLoggedIn flag from localStorage
+    localStorage.removeItem("isLoggedIn");
+
+    this.auth0.logout({
+      returnTo: window.location.origin
+    });
+
+    // navigate to the home route
+    history.replace("/");
+  }
 }

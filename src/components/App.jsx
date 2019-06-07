@@ -21,6 +21,10 @@ export default class App extends Component {
     auth.login();
   }
 
+  logout() {
+    auth.logout();
+  }
+
   render() {
     return (
       <>
@@ -31,6 +35,7 @@ export default class App extends Component {
                 <Navbar
                   isAuthenticated={auth.isAuthenticated()}
                   login={this.login}
+                  logout={this.logout}
                 />
               )}
             />

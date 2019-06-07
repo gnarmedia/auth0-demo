@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Navbar({ isAuthenticated, login }) {
+export default function Navbar({ isAuthenticated, login, logout }) {
   return (
     <header className="masthead">
       <div className="logo">Auth0 Demo</div>
@@ -10,7 +10,7 @@ export default function Navbar({ isAuthenticated, login }) {
         </li>
         <li>
           {isAuthenticated ? (
-            <button>Log Out</button>
+            <button onClick={logout}>Log Out</button>
           ) : (
             <button onClick={login}>Log In</button>
           )}
