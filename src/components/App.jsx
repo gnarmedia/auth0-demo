@@ -36,30 +36,32 @@ export default class App extends Component {
 
   render() {
     return (
-      <>
+      <div className="container">
         <Router history={history}>
-          <div>
-            <Route
-              path="/callback"
-              render={props => {
-                this.handleAuthentication(props);
-                return <Callback {...props} />;
-              }}
-            />
-            <Route
-              render={() => (
-                <Navbar
-                  isAuthenticated={this.auth.isAuthenticated()}
-                  login={this.login}
-                  logout={this.logout}
-                />
-              )}
-            />
-            <Route path="/" exact component={Home} />
-            <Route path="/dashboard" exact component={Dashboard} />
-          </div>
+          <Route
+            path="/callback"
+            render={props => {
+              this.handleAuthentication(props);
+              return <Callback {...props} />;
+            }}
+          />
+          <Route
+            render={() => (
+              <Navbar
+                isAuthenticated={this.auth.isAuthenticated()}
+                login={this.login}
+                logout={this.logout}
+              />
+            )}
+          />
+          <Route path="/" exact component={Home} />
+          <Route
+            path="/dashboard"
+            exact
+            render={() => <Dashboard auth={this.auth} />}
+          />
         </Router>
-      </>
+      </div>
     );
   }
 }

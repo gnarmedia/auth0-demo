@@ -1,0 +1,18 @@
+body {
+  margin: 20px;
+}
+
+.navbar {
+  margin-bottom: 20px;
+}
+
+.greeting {
+  margin-top: 75px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 50px;
+}
+
+.tile-subtitle {
+  word-break: break-all;
+}
