@@ -22,7 +22,7 @@ export default class Auth {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
       } else if (err) {
-        history.replace("/home");
+        history.replace("/dashboard");
         console.log(err);
         alert(`Error: ${err.error}. Check the console for further details.`);
       }
@@ -39,8 +39,8 @@ export default class Auth {
     this.idToken = authResult.idToken;
     this.expiresAt = expiresAt;
 
-    // navigate to the home route
-    history.replace("/home");
+    // navigate to the dashboard route
+    history.replace("/dashboard");
   }
 
   renewSession = () => {

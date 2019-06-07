@@ -55,8 +55,8 @@ export default class App extends Component {
                 />
               )}
             />
-            <Route path="/" component={Home} />
-            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/" exact component={Home} />
+            <Route path="/dashboard" exact component={Dashboard} />
           </div>
         </Router>
       </>
